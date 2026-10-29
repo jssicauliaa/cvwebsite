@@ -1,0 +1,338 @@
+:root {
+  --ink: #3a2a5c;            
+  --ink-soft: #6b5b8c;
+  --cream: #fff7fa;
+  --pink: #ffcfe0;
+  --lilac: #dccbff;
+  --blue: #c3e4ff;
+  --mint: #c8f2dd;
+  --peach: #ffdcc8;
+  --butter: #fff0a6;
+  --white: #ffffff;
+
+  --border: 2.5px solid var(--ink);
+  --shadow: 6px 6px 0 var(--ink);
+  --font-head: "Fredoka", "Trebuchet MS", sans-serif;
+  --font-body: "Nunito", "Segoe UI", sans-serif;
+}
+
+/* ============ BASE ============ */
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background-color: var(--cream);
+  background-image: radial-gradient(rgba(58, 42, 92, .12) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+  line-height: 1.7;
+}
+
+h1, h2, h3 { font-family: var(--font-head); color: var(--ink); line-height: 1.2; font-weight: 600; }
+a { color: var(--ink); }
+::selection { background: var(--butter); color: var(--ink); }
+
+a:focus-visible, .btn:focus-visible, .nav-link:focus-visible, .navbar-toggler:focus-visible {
+  outline: 3px dashed var(--ink);
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
+/* ============ NAVBAR (pil melayang) ============ */
+.site-nav { padding: .8rem 0; }
+.site-nav > .container {
+  background: var(--white);
+  border: var(--border);
+  border-radius: 2rem;
+  box-shadow: 4px 4px 0 var(--ink);
+  padding: .5rem 1rem .5rem 1.4rem;
+  max-width: calc(1140px - 1.5rem);
+}
+.site-nav .navbar-brand {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--ink);
+}
+.site-nav .nav-link {
+  color: var(--ink);
+  font-weight: 700;
+  border-radius: 2rem;
+  padding: .4rem .95rem;
+}
+.site-nav .nav-link:hover { background: var(--pink); }
+.site-nav .nav-link.active { background: var(--lilac); }
+.navbar-toggler { border: var(--border); border-radius: .8rem; }
+
+/* ============ BUTTONS ============ */
+.btn {
+  font-family: var(--font-head);
+  font-weight: 600;
+  border: var(--border);
+  border-radius: 2rem;
+  color: var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform .15s, box-shadow .15s;
+}
+.btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); color: var(--ink); }
+.btn-pink { background: var(--pink); }
+.btn-butter { background: var(--butter); }
+
+/* ============ STICKER ============ */
+.sticker-row { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 1rem; padding: 0; }
+.sticker {
+  display: inline-block;
+  border: var(--border);
+  border-radius: 2rem;
+  padding: .15rem .9rem;
+  font-weight: 700;
+  font-size: .9rem;
+  background: var(--white);
+  transition: transform .2s;
+}
+.sticker:nth-child(odd) { transform: rotate(-2deg); }
+.sticker:nth-child(even) { transform: rotate(2deg); }
+.sticker:hover { transform: rotate(0) scale(1.08); }
+.s-pink { background: var(--pink); }
+.s-blue { background: var(--blue); }
+.s-mint { background: var(--mint); }
+
+/* ============ HERO / BIODATA ============ */
+.hero { padding: 9rem 0 5rem; }
+.hero-title {
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+.hero-text { max-width: 60ch; font-size: 1.08rem; margin-bottom: 1.5rem; }
+
+/* polaroid */
+.photo-frame {
+  position: relative;
+  max-width: 310px;
+  margin: 0;
+  background: var(--white);
+  padding: 14px 14px 12px;
+  border: var(--border);
+  border-radius: 1.2rem;
+  box-shadow: 10px 10px 0 var(--pink);
+  transform: rotate(-3deg);
+}
+.photo-frame::before {          /* selotip */
+  content: "";
+  position: absolute;
+  top: -16px; left: 50%;
+  width: 90px; height: 28px;
+  transform: translateX(-50%) rotate(4deg);
+  background: rgba(255, 240, 166, .85);
+  border: 2px dashed rgba(58, 42, 92, .35);
+}
+.photo-frame img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: var(--lilac);
+  border: 2px solid var(--ink);
+  border-radius: .6rem;
+}
+.photo-frame figcaption {
+  font-family: var(--font-head);
+  text-align: center;
+  padding-top: .6rem;
+  font-size: 1rem;
+}
+
+.biodata {
+  background: var(--white);
+  border: var(--border);
+  border-radius: 1.4rem;
+  box-shadow: var(--shadow);
+  padding: 1rem 1.4rem;
+  max-width: 640px;
+}
+.biodata dt, .biodata dd { padding-block: .35rem; margin: 0; border-bottom: 2px dashed rgba(58, 42, 92, .2); }
+.biodata dt { color: var(--ink-soft); font-weight: 600; }
+.biodata dd { font-weight: 700; }
+.biodata dt:nth-last-of-type(1), .biodata dd:last-of-type { border-bottom: 0; }
+
+/* ============ SECTIONS ============ */
+.section { padding: 5rem 0; }
+.section-alt {
+  background: var(--lilac);
+  border-block: var(--border);
+  background-image: radial-gradient(rgba(255, 255, 255, .55) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
+.section-title {
+  display: inline-block;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  background: var(--butter);
+  border: var(--border);
+  border-radius: 1rem;
+  padding: .2rem 1.1rem;
+  box-shadow: 4px 4px 0 var(--ink);
+  transform: rotate(-1.5deg);
+}
+.section-alt .section-title { background: var(--white); }
+
+/* ============ ENTRY ============ */
+.entry {
+  background: var(--white);
+  border: var(--border);
+  border-radius: 1.6rem;
+  box-shadow: var(--shadow);
+  padding: 1.4rem;
+  margin-bottom: 2rem;
+}
+.entry:last-child { margin-bottom: 0; }
+.entry:nth-of-type(3n+1) { box-shadow: 6px 6px 0 var(--pink); }
+.entry:nth-of-type(3n+2) { box-shadow: 6px 6px 0 var(--blue); }
+.entry:nth-of-type(3n+3) { box-shadow: 6px 6px 0 var(--mint); }
+
+.entry-photo {
+  background: var(--white);
+  padding: 8px;
+  border: var(--border);
+  border-radius: 1rem;
+  transform: rotate(-2deg);
+  transition: transform .2s;
+}
+.entry:nth-of-type(even) .entry-photo { transform: rotate(2deg); }
+.entry-photo:hover { transform: rotate(0) scale(1.03); }
+.entry-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--pink);
+  border-radius: .6rem;
+}
+.entry:nth-of-type(3n+2) .entry-photo img { background: var(--blue); }
+.entry:nth-of-type(3n+3) .entry-photo img { background: var(--mint); }
+
+.entry-date {
+  display: inline-block;
+  background: var(--butter);
+  border: 2px solid var(--ink);
+  border-radius: 2rem;
+  padding: 0 .8rem;
+  font-size: .85rem;
+  font-weight: 700;
+}
+.entry:nth-of-type(3n+2) .entry-date { background: var(--blue); }
+.entry:nth-of-type(3n+3) .entry-date { background: var(--mint); }
+.entry-title { font-size: 1.4rem; margin: .5rem 0 .1rem; }
+.entry-place { color: var(--ink-soft); font-weight: 700; margin-bottom: .6rem; }
+.entry-list { padding-left: 1.2rem; font-size: .96rem; }
+.entry-list li { margin-bottom: .25rem; }
+.entry-list li::marker { content: "♡  "; color: var(--ink); }
+
+/* ---- carousel foto di dalam polaroid ---- */
+.entry-photo .carousel-inner { border-radius: .6rem; border: 2px solid var(--ink); }
+.entry-photo .carousel-item img { border: 0; border-radius: 0; }
+.entry-photo .carousel-control-prev,
+.entry-photo .carousel-control-next {
+  width: auto;
+  padding: 0 .5rem;
+  opacity: 1;
+  bottom: 2rem;                 /* sisakan ruang untuk titik di bawah */
+}
+.car-btn {
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding-bottom: .2rem;
+  background: var(--white);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  box-shadow: 2px 2px 0 var(--ink);
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: background .15s, transform .15s;
+}
+.carousel-control-prev:hover .car-btn,
+.carousel-control-next:hover .car-btn { background: var(--pink); transform: scale(1.1); }
+.entry-photo .carousel-indicators {
+  position: static;
+  margin: .7rem 0 .1rem;
+  gap: .45rem;
+  justify-content: center;
+}
+.entry-photo .carousel-indicators [data-bs-target] {
+  box-sizing: border-box;
+  width: 13px;
+  height: 13px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--white);
+  opacity: 1;
+  text-indent: 0;
+}
+.entry-photo .carousel-indicators .active { background: var(--pink); transform: scale(1.25); }
+
+/* ============ CHIPS / KEAHLIAN ============ */
+.skill-head {
+  font-size: 1.15rem;
+  margin-bottom: .8rem;
+}
+.chip-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+.chip-list li {
+  background: var(--pink);
+  border: 2px solid var(--ink);
+  border-radius: 2rem;
+  padding: .1rem .85rem;
+  font-weight: 700;
+  font-size: .9rem;
+  transition: transform .15s;
+}
+.chip-list li:hover { transform: translateY(-3px) rotate(-2deg); }
+.chip-list li:nth-child(4n+2) { background: var(--blue); }
+.chip-list li:nth-child(4n+3) { background: var(--mint); }
+.chip-list li:nth-child(4n+4) { background: var(--butter); }
+.chip-list-sm li { font-size: .8rem; padding: 0 .65rem; }
+
+/* ============ KONTAK ============ */
+.contact-box {
+  background: var(--pink);
+  border: var(--border);
+  border-radius: 2rem;
+  box-shadow: 8px 8px 0 var(--ink);
+  padding: clamp(1.75rem, 5vw, 3rem);
+}
+.contact-box .section-title { background: var(--white); }
+.contact-list li {
+  display: flex;
+  flex-direction: column;
+  padding: .7rem 1rem;
+  margin-bottom: .7rem;
+  background: var(--white);
+  border: var(--border);
+  border-radius: 1rem;
+}
+.contact-list li:last-child { margin-bottom: 0; }
+.contact-list span { font-size: .8rem; font-weight: 700; color: var(--ink-soft); }
+.contact-list a { font-weight: 700; text-decoration: none; word-break: break-all; }
+.contact-list a:hover { text-decoration: underline wavy; }
+
+/* ============ FOOTER ============ */
+.site-footer { padding: 1rem 0 2.5rem; font-weight: 600; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 991.98px) {
+  .hero { padding-top: 7.5rem; }
+  .site-nav > .container { border-radius: 1.5rem; }
+  .site-nav .navbar-collapse { padding: .6rem 0 .4rem; }
+  .photo-frame { max-width: 250px; box-shadow: 7px 7px 0 var(--pink); }
+}
